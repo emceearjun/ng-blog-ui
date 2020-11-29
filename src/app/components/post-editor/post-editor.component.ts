@@ -22,8 +22,8 @@ export class PostEditorComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.post = this.route.snapshot.data.post.post as IPostResponseModel;
-    this.isEdit = this.route.snapshot.data.post.edit as boolean;
+    this.post = this.route.snapshot.data.post?.post as IPostResponseModel;
+    this.isEdit = this.route.snapshot.data.post?.edit as boolean;
 
     this.editPostForm = new FormGroup({
       title: new FormControl(this.post?.title, Validators.required),
