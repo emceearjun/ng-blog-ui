@@ -1,0 +1,107 @@
+@import "theme";
+
+.actions-container {
+  display: flex;
+  padding: spacing(2) spacing(10);
+
+  & > a {
+    text-decoration: none;
+  }
+}
+
+.view-blog-container {
+  display: flex;
+  padding: 0 spacing(10);
+
+  .current-blog {
+    width: 100%;
+    margin-right: spacing(4);
+
+    article {
+      h1 {
+        margin-bottom: spacing(1);
+      }
+      a.edit-post {
+        float: right;
+        color: $blue;
+      }
+      p {
+        border-bottom: 1px solid $gray-light;
+        margin-top: 0;
+        padding-bottom: spacing(1);
+        font-size: 0.8rem;
+        
+        .author {
+          color: $blue;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+        
+      }
+    }
+  }
+
+  .recent-blogs {
+    width: 500px;
+    
+    .recent-post-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      & > li {
+        margin-bottom: spacing(1);
+        border-bottom: 1px solid $gray-light;
+        padding-bottom: spacing(1);
+
+        & > a {
+          text-decoration: none;
+          color: $black;
+          font-size: 1rem;
+          font-weight: bold;
+          transition: color 0.2s ease-out;
+
+          &:hover {
+            color: $blue;
+          }
+        }
+
+        p {
+          font-size: 0.8rem;
+        }
+
+        a.load-more {
+          color: $blue;
+          font-size: 0.8rem;
+          position: relative;
+          top: -10px;
+        }
+
+        .recent-date {
+          float: right;
+          font-size: 0.7rem;
+        }
+      }
+    }
+  }
+
+  .date {
+    color: $gray-dark;
+    font-style: italic;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  body {
+    background-color: red;
+  }
+  .view-blog-container {
+    flex-direction: column;
+    .current-blog {
+      width: 100%;
+    }
+    .recent-blogs {
+      width: 100%;
+    }
+  }
+}

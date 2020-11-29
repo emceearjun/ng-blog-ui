@@ -1,0 +1,18 @@
+
+<div class="form-container">
+  <form [formGroup]="editPostForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" pInputText class="title" id="title" formControlName="title" autocomplete="off" />
+    </div>
+    <div class="form-group">
+      <label for="body">Body</label>
+      <p-editor formControlName="body" class="body" id="body" [style]="{ height: '320px' }">
+        <p-fileUpload [showUploadButton]="false"></p-fileUpload>
+      </p-editor>
+    </div>
+    <div class="form-actions">
+      <button pButton type="submit" label="Save" [disabled]="!editPostForm.valid" class="p-button-secondary"></button>
+    </div>
+  </form>
+</div>

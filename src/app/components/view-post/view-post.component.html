@@ -1,0 +1,28 @@
+<div class="actions-container">
+  <a [routerLink]="['/create']" pButton label="New Post" icon="fa fa-plus" class="p-button-success"></a>
+</div>
+<div class="view-blog-container" *ngIf="(post$ | async) as post">
+  <div class="current-blog">
+    <article>
+      <h1>{{ post.title }}</h1>
+      <a class="edit-post" title="Edit this post" [routerLink]="['/edit', post.slug]"><span class="fa fa-edit"></span></a>
+      <p><span class="author">{{ post.author }}</span>&nbsp;&nbsp;<span class="date">{{ post.createdAt | date:'MMM d, y, h:mm a' }}</span></p>
+      <div [innerHTML]="post.body | safeHtml"></div>
+    </article>
+  </div>
+  <div class="recent-blogs">
+    <p-panel header="Recent Posts">
+      <ul class="recent-post-list">
+        <li *ngFor="let recentPost of recentPosts$ | async">
+          <a [routerLink]="['/view', recentPost.slug]">
+            {{ recentPost.title }}
+          </a>
+          <span class="date recent-date">{{ recentPost.lastModified | timeago:false }}</span>
+          <p loadMore [linkText]="'View full post'" [linkUrl]="'/view/' + recentPost.slug">
+            {{ recentPost.body | stripHtml }}
+          </p>
+        </li>
+      </ul>
+    </p-panel>
+  </div>
+</div>
